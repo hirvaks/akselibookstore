@@ -24,14 +24,17 @@ public class AkselibookstoreApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository repository) {
 		return (args) -> {
-			log.info("save a couple of books");
+			log.info("### SAVING TEST BOOKS");
 			repository.save(new Book(null, "TestiKirja1", "Akseli", 2022, "1234567890", 10));
 			repository.save(new Book(null, "TestiKirja2", "Akseli", 2022, "0987654321", 10));
-			
-			log.info("fetch all books");
+			log.info("### SAVED " + repository.count() + " BOOKS");
+			log.info("### FETCHING ALL AVAILABLE BOOKS");
+			int count = 0;
 			for (Book book: repository.findAll()) {
 				log.info(book.toString());
+				count++;
 			}
+			log.info("### " + count + " BOOKS AVAILABLE");
 		};
 	}
 }
