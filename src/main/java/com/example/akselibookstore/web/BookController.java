@@ -14,7 +14,11 @@ import com.example.akselibookstore.domain.BookRepository;
 public class BookController {
 	@Autowired
 	private BookRepository repository; 
-	
+	/*
+	 "/edit/X" endpointteja ei enää tarvitse,
+	 editbook.html ohjaus korjattu
+	 th:action="@{save}" -> th:action="@{../save}"
+	 */
     @RequestMapping(value= {"/", "/booklist", "/edit/booklist"})
     public String bookList(Model model) {
     	System.out.println("### GET BOOKLIST");
