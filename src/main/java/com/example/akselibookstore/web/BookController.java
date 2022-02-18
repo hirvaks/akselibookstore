@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.akselibookstore.domain.Book;
 import com.example.akselibookstore.domain.BookRepository;
+import com.example.akselibookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 	@Autowired
-	private BookRepository repository; 
+	private BookRepository repository;
+	
+	@Autowired
+	private CategoryRepository crepository; 
 	/*
 	 "/edit/X" endpointteja ei enää tarvitse,
 	 editbook.html ohjaus korjattu
@@ -30,6 +34,7 @@ public class BookController {
     public String addBook(Model model){
     	System.out.println("### ADDING A NEW BOOK");
     	model.addAttribute("book", new Book());
+    	model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }     
     
@@ -57,6 +62,7 @@ public class BookController {
     	Book bookEdit = repository.findById(bookId).get();
     	// model.addAttribute("ebook", bookEdit);
     	model.addAttribute("book", bookEdit);
+    	model.addAttribute("categories", crepository.findAll());
     	return "editbook";
     }
 }

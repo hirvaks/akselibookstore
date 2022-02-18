@@ -3,6 +3,7 @@
 <head>
     <title>Editing book</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Edit book</h1>
@@ -13,23 +14,28 @@
 		  	
 		  	<label for="titel">Title</label>
 			<input type="text" id="title" th:field="*{title}"/>
-				<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>
 				
 			<label for="author">Author</label>
 			<input type="text" id="author" th:field="*{author}"/>
-				<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>
 		  	
 		  	<label for="year">Year</label>
 			<input type="text" id="year" th:field="*{year}"/>
-				<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>
 				
 			<label for="isbn">ISBN</label>
 			<input type="text" id="isbn" th:field="*{isbn}"/>
-				<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>
 				
 			<label for="price">Price</label>
 			<input type="text" id="price" th:field="*{price}"/>
-				<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+				
+			<label for="catlist">Category</label>
+			<select id="catlist" th:field="*{category.catid}" class="form-control">
+       			<option th:each="cat: ${categories}" th:value="${cat.catid}" th:text="${cat.name}"></option>
+    		</select>
 			
 			<input type="submit" value="Save"></input>
 		</form>
